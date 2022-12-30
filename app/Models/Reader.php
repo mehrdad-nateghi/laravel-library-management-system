@@ -15,6 +15,10 @@ class Reader extends Model
 		'card_number',
 	];
 
+	protected $hidden = ['user_id'];
+
+	protected $with = ['user'];
+
 	/**
 	 * @return BelongsTo
 	 */

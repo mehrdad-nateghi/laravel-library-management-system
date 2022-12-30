@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('borrowed_books', function (Blueprint $table) {
+        Schema::create('borrowings', function (Blueprint $table) {
 			$table->id();
 			$table->foreignId('book_id')->constrained();
 			$table->foreignId('librarian_id')->constrained();
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('borrowed_books');
+        Schema::dropIfExists('borrowings');
     }
 };

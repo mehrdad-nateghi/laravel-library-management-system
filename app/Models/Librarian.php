@@ -11,6 +11,10 @@ class Librarian extends Model
 {
     use HasFactory;
 
+	protected $hidden = ['user_id'];
+
+	protected $with = ['user'];
+
 	/**
 	 * @return BelongsTo
 	 */
