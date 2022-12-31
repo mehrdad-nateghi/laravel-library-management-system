@@ -144,6 +144,8 @@ return [
     'url' => 'The :attribute must be a valid URL.',
     'ulid' => 'The :attribute must be a valid ULID.',
     'uuid' => 'The :attribute must be a valid UUID.',
+	'card_number' => 'The reader can not borrow a book. There is a delay in return.',
+	'book_id' => 'The book is not available.',
 
     /*
     |--------------------------------------------------------------------------
@@ -160,6 +162,7 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+
     ],
 
     /*

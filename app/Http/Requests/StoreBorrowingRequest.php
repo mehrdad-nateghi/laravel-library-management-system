@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\BookCanBorrow;
+use App\Rules\ReaderCanBorrow;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreBorrowingRequest extends FormRequest
@@ -24,10 +26,10 @@ class StoreBorrowingRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			'card_number'  => 'required|exists:readers,card_number',
-			'book_id'      => 'required|exists:books,id',
-			'period_start' => 'required|after_or_equal:today',
-			'period_end'   => 'required|after:period_start',
+			'card_number'  => ['required','exists:readers,card_number', new ReaderCanBorrow],
+			'book_id'      => ['required','exists:books,id', new BookCanBorrow],
+			'period_start' => 'required|date|after_or_equal:today',
+			'period_end'   => 'required|date|after:period_start',
 		];
 	}
 }

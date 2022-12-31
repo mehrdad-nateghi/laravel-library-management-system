@@ -6,9 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBorrowingRequest;
 use App\Http\Resources\BorrowingResource;
 use App\Interfaces\BorrowingRepositoryInterface;
+use Exception;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\Response;
 use function App\Http\Controllers\apiResource;
 
 class BorrowingController extends Controller
@@ -24,10 +25,10 @@ class BorrowingController extends Controller
 	 * Store a newly created resource in storage.
 	 * @param StoreBorrowingRequest $request
 	 * @return JsonResponse
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 
-	public function store(StoreBorrowingRequest $request)
+	public function store(StoreBorrowingRequest $request): JsonResponse
 	{
 		$validated = $request->validated();
 
@@ -37,7 +38,7 @@ class BorrowingController extends Controller
 			$borrowedBook = $this->borrowingRepository->create($validated);
 
 			DB::commit();
-		} catch (\Exception $exception) {
+		} catch (Exception $exception) {
 			DB::rollBack();
 			throw $exception;
 		}
