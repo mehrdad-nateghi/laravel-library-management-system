@@ -21,7 +21,7 @@ class BookCanBorrow implements InvokableRule
 		$book          = Book::query()->find($value);
 		$existBorrowed = $book->existBorrowed();
 
-		if($existBorrowed = TRUE){
+		if($existBorrowed){
 			$fail('validation.book_id')->translate();
 		}
 	}
