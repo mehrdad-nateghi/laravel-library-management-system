@@ -26,10 +26,10 @@ class StoreBorrowingRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			'card_number'  => ['required','exists:readers,card_number', new ReaderCanBorrow],
-			'book_id'      => ['required','exists:books,id', new BookCanBorrow],
-			'period_start' => 'required|date|after_or_equal:today',
-			'period_end'   => 'required|date|after:period_start',
+			'card_number'  => ['bail','required','numeric','exists:readers,card_number', new ReaderCanBorrow],
+			'book_id'      => ['bail','required','numeric','exists:books,id', new BookCanBorrow],
+			'period_start' => ['bail','required','date','after_or_equal:today'],
+			'period_end'   => ['bail','required','date','after_or_equal:period_start'], // or after:period_start
 		];
 	}
 }

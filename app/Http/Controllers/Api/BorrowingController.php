@@ -10,7 +10,6 @@ use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
-use function App\Http\Controllers\apiResource;
 
 class BorrowingController extends Controller
 {
@@ -34,15 +33,13 @@ class BorrowingController extends Controller
 
 		try {
 			DB::beginTransaction();
-
-			$borrowedBook = $this->borrowingRepository->create($validated);
-
+			$borrowing = $this->borrowingRepository->create($validated);
 			DB::commit();
 		} catch (Exception $exception) {
 			DB::rollBack();
-			throw $exception;
+			throw new $exception;
 		}
 
-		return response()->json(['data' => new BorrowingResource($borrowedBook)],Response::HTTP_CREATED);
+		return response()->json(['data' => new BorrowingResource($borrowing)],Response::HTTP_CREATED);
 	}
 }

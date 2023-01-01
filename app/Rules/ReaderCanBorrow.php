@@ -19,11 +19,10 @@ class ReaderCanBorrow implements InvokableRule
 	public function __invoke($attribute,$value,$fail): void
 	{
 		/* @var Reader $reader */
-		$reader       = Reader::query()->where('card_number',$value)->first();
-		$existDelayed = $reader->existDelay();
+		$reader = Reader::query()->where('card_number', 'like' ,"%{$value}%")->first();
 
-		if ($existDelayed) {
-			$fail('validation.card_number')->translate();
+		if(!empty($reader) && $reader->existDelay()){
+			$fail('validation.custom.reader.exists_delay')->translate();
 		}
 	}
 }
