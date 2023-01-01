@@ -59,3 +59,5 @@ Shift::where('date', Carbon::now()->toDateString())->orderBy('id', 'desc')->firs
 - ``php artisan migrate --seed``
 - ``php artisan route:list``
 - ``php artisan serv``
+- Run Manually ``php artisan report:best-librarian`` 
+- Scheduled monthly ``$schedule->command('report:best-librarian')->lastDayOfMonth('23:50');``
