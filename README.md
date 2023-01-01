@@ -19,8 +19,9 @@ I developed a RESTful API for the Library Management System.
 - [x] Validations
 - [x] Custom Validation Rules
 - [x] Writing Artisan command
-- [x] Queues
-- [x] Task Scheduling 
+- [x] Queues & Jobs
+- [x] Task Scheduling
+- [x] Mail
 - [x] Authentication
 - [ ] Error Handling
 - [ ] Logging
@@ -28,6 +29,7 @@ I developed a RESTful API for the Library Management System.
 - [ ] API documentation with Swagger
 - [ ] GraphQL
 - [ ] Dockerizing
+- [ ] Define more endpoints
 
 ## Why did I create Shifts table?
 Every librarian has many shifts
@@ -50,3 +52,10 @@ Shift::where('date', Carbon::now()->toDateString())->orderBy('id', 'desc')->firs
 - We can assign shifts to every librarian by scheduled command or manually.
 
 ## Installation
+
+- Clone the repo
+- `composer install`
+- Create a database and set in .env
+- ``php artisan migrate --seed``
+- ``php artisan route:list``
+- ``php artisan serv``
