@@ -18,6 +18,7 @@ return new class extends Migration
 			$table->foreignId('user_id')->constrained()->onDelete('cascade');
 			$table->integer('card_number')->unique();
 			$table->timestamps();
+			$table->softDeletes();
         });
     }
 

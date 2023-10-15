@@ -23,6 +23,7 @@ return new class extends Migration
 			$table->date('return_date')->nullable();
 			$table->enum('status',['issued','returned'])->nullable();
 			$table->timestamps();
+			$table->softDeletes();
         });
     }
 

@@ -18,6 +18,7 @@ return new class extends Migration
 			$table->foreignId('librarian_id')->constrained();
 			$table->date('date')->nullable();
 			$table->timestamps();
+			$table->softDeletes();
         });
     }
 
