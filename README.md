@@ -5,6 +5,9 @@ I developed a RESTful API for the Library Management System.
 ## Roadmap
 
 - [x] Repository Pattern
+- [x] Strategy Design Pattern
+- [x] Dependency Inversion Principle
+- [x] Database Design
 - [x] Migration
 - [x] Seeding
 - [x] Factory
@@ -23,12 +26,14 @@ I developed a RESTful API for the Library Management System.
 - [x] Task Scheduling
 - [x] Mail
 - [x] Authentication
+- [x] Testing
+- [x] API documentation with Postman
+- [ ] API documentation with Swagger
+- [ ] Code Documentation
 - [ ] Error Handling
 - [ ] Logging
-- [ ] Testing
-- [ ] API documentation with Swagger
 - [ ] GraphQL
-- [ ] Dockerizing
+- [ ] Dockerized
 - [ ] Define more endpoints
 
 ## Why did I create Shifts table?
@@ -58,6 +63,7 @@ Shift::where('date', Carbon::now()->toDateString())->orderBy('id', 'desc')->firs
 - Create a database and set in .env
 - ``php artisan migrate --seed``
 - ``php artisan route:list``
+- ``php artisan test``
 - ``php artisan serv``
 - Run Manually ``php artisan report:best-librarian`` 
 - Scheduled monthly ``$schedule->command('report:best-librarian')->lastDayOfMonth('23:50');``
