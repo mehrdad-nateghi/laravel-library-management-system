@@ -13,7 +13,7 @@ class Book extends Model
     use HasFactory;
 	use SoftDeletes;
 
-
+	protected $fillable = ['name','author_id'];
 	protected $with = ['author'];
 
 	protected $hidden = ['author_id'];

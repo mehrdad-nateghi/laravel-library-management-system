@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\BorrowingController;
+use App\Http\Controllers\Api\BookController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(function(){
-	//Route::apiResource('borrowed-books', BorrowedBooksController::class)->except(['index','show','update','destroy']);
+	Route::apiResource('books', BookController::class);
 });
 
+Route::apiResource('books', BookController::class);
+
 //Route::apiResource('borrowed-books', BorrowedBooksController::class)->except(['index','show','update','destroy']);
-Route::post('borrowing', [BorrowingController::class, 'store']);
+//Route::post('borrowing', [BookController::class,'store']);
